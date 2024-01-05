@@ -32,7 +32,7 @@ pipeline {
          stage('Terraform Plan') {
             steps {
                 echo 'Terraform Initilization is in Progress!'
-                sh 'terraform plan -var-file=terraform.tfvars -out=tfplan.txt'
+                sh 'terraform plan -out=tfplan'
             }
         }
         stage('Approval') {
@@ -43,7 +43,7 @@ pipeline {
             }
             steps {
                 script {
-                    def plan = reafFile 'tfplan.txt'
+                    def plan = reafFile 'tfplan'
                     input message: "Do you want to apply the plan?",
                         parameters: [text(name: 'Plan', description: 'Please review the plan', defaultValue: plan)]
                 }
