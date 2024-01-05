@@ -3,7 +3,7 @@ output "id" {
 }
 
 output "name" {
-    value = aws_instance.aws_instance[*].Name
+    value = aws_instance.aws_instance[*].name
 }
 
 output "public_ip" {
